@@ -1,6 +1,6 @@
 <script>
 	export let name1 = 'FARRAS';
-	export let name2 = 'SOMEONE';
+	export let name2 = 'SOMEONE?';
 	// export let hexbg = '#FAFAFA';
 	export let hextext = '#010101';
 	export let font = 'handwritten-font';
@@ -21,7 +21,7 @@
 	flex flex-col p-2 text-center text-[{hextext}]
 	"
 	>
-		{#if name2 === 'AURORA'}
+		{#if name2}
 			<h1 class=" text-2xl font-bold uppercase">
 				{name1}
 			</h1>
