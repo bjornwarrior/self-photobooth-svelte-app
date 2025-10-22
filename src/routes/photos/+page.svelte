@@ -3,6 +3,7 @@
 	import IconCheckBold from 'phosphor-icons-svelte/IconCheckBold.svelte';
 	import IconCameraBold from 'phosphor-icons-svelte/IconCameraBold.svelte';
 	import IconMonitorFill from 'phosphor-icons-svelte/IconMonitorFill.svelte';
+	import { onMount } from 'svelte';
 
 	// let totalPhoto = $props().total;
 	let photoList = $state<{
@@ -19,32 +20,41 @@
 
 	let canRetake = $state<boolean>(false);
 	let isShoot = $state<boolean>(true);
-	let isPreviewNotBlank = $state<boolean>(false);
+	let isTake = $state<boolean>(false);
 	let currentUrlPreviewPhoto = $state<String | null>(null);
 	let queque = $state<number>(0);
     let finishedPhoto = $state<boolean>(false)
     let isPreview = $state<boolean>(false)
-
+	let counter = $state<number>(5)
+	
 	const takePicture = () => {
-		alert('take picture');
-		addPreviewImage(queque, null, './img/models1.png');
-		isShoot = false;
-		currentUrlPreviewPhoto = './img/models1.png';
-		canRetake = true;
-        isPreview = false
+		isTake = true
+		counter = 5
+		startCountdown()
 
-
-        const dataFilter = photoList.data.filter((cb,i)=>{
-                if( cb.url !== null ){
-                    return true
-                } else{
-                    return false
-                }
-            })
-        console.log('dataFilter count:  ' + dataFilter.length)
-        if(Number(dataFilter.length) === photoList.total){
-            finishedPhoto = true
-        }
+		setTimeout(()=>{
+			isTake = false
+			console.log('hai after')
+			console.log('hai after')
+			addPreviewImage(queque, null, './img/models1.png');
+			isShoot = false;
+			currentUrlPreviewPhoto = './img/models1.png';
+			canRetake = true;
+			isPreview = false
+	
+	
+			const dataFilter = photoList.data.filter((cb,i)=>{
+					if( cb.url !== null ){
+						return true
+					} else{
+						return false
+					}
+				})
+			console.log('dataFilter count:  ' + dataFilter.length)
+			if(Number(dataFilter.length) === photoList.total){
+				finishedPhoto = true
+			}
+		}, 5000)
 	};
 
 	const retakePicture = () => {
@@ -118,11 +128,22 @@
 		};
 	});
 
+	const startCountdown = () => {
+		const interval = setInterval(() => {
+			counter -= 1;
+			if(counter === 0 ){
+				clearInterval(interval);
+			}
+		}, 1000)
+	}
+
+	
+
 	$inspect(photoList.data);
 </script>
 
 <div class="relative flex max-h-svh min-h-svh items-center bg-[#010101]">
-	<div class="z-1 flex h-svh w-full flex-1 items-start justify-center pt-10">
+	<div class="z-1 flex h-svh w-full flex-1 items-start justify-center">
 		<button
 			onclick={retakePicture}
 			class="cursor-pointer p-2
@@ -130,7 +151,7 @@
     "
 		>
 			<IconArrowCounterClockwiseBold
-				class="mt-4 h-40 w-40 scale-350 cursor-pointer text-[#fafafa]"
+				class=" h-[5vh] aspect-square curso scale-150rmin--pointer tex10-[#fafafa]"
 			/>
 		</button>
 	</div>
@@ -141,7 +162,18 @@
 			: 'background-image: url(' + currentUrlPreviewPhoto + ')'}
 	>
 		<!-- ABSOLUTE -->
-		<div class="absolute bottom-0 z-2 mb-20 flex w-full justify-evenly">
+			<!-- LOADER   -->
+			{#if isTake }
+				
+			<div class="absolute justify-center items-center w-full flex h-[90vh]  z-3 ">
+				<div class="h-[15vh] outline-1 aspect-square flex justify-center items-center bg-[#010101]/50">
+					<p class="font-semibold text-[#fafafa]">{counter}</p>
+				</div>
+			</div>
+			
+			{/if}
+			<!-- IMAGE LIST -->
+		<div class="absolute bottom-0 z-2 mb-[5vh] flex w-full justify-evenly">
 			{#each totalPhotos as _, i}
 				<!-- content here -->
 				{#if photoList.data[i] != null && photoList.data[i].url != undefined && photoList.data[i].url != null}
@@ -157,7 +189,7 @@
 						<img
 							src={photoList.data[i].url}
 							alt="human"
-							class="aspect-video h-36 object-cover {
+							class="aspect-video h-[15vh] object-cover {
                                                     queque == i ? '' : 'outline-1'
                             }"
 						/>
@@ -171,7 +203,7 @@
                         {queque == i && 'outline-2 p-1'}
                         "
 					>
-						<div class="aspect-video h-36 bg-[#010101]/40 {
+						<div class="aspect-video h-[15vh] bg-[#010101]/40 {
                         queque == i ? '' : 'outline-1'
                         }"></div>
 					</button>
@@ -180,7 +212,7 @@
 		</div>
 		<!-- ABSOLUTE -->
 	</div>
-	<div class="z-1 flex h-svh w-full flex-1 items-start justify-center pt-10">
+	<div class="z-1 flex h-svh w-full flex-1 items-start justify-center">
 		<button
 			class="cursor-pointer p-2
             {(isShoot || finishedPhoto || isPreview ) && 'hidden'  
@@ -188,7 +220,7 @@
             "
 			onclick={() => successAddPicture()}
 		>
-			<IconCheckBold class="mt-4 h-40 w-40 scale-350 text-[#fafafa]" />
+			<IconCheckBold class=" aspect-square scale-200 min-h-[10vh]  text-[#fafafa]" />
 		</button>
 		<button
 			class="cursor-pointer p-2
@@ -196,7 +228,7 @@
             "
 			onclick={takePicture}
 		>
-			<IconCameraBold class="mt-4 h-40 w-40 scale-350 text-[#fafafa]" />
+			<IconCameraBold class=" aspect-square scale-200 min-h-[10vh]  text-[#fafafa]" />
 		</button>
 		<button
 			class="cursor-pointer p-2
@@ -204,7 +236,7 @@
             "
 			onclick={finishSession}
 		>
-			<IconMonitorFill class="mt-4 h-40 w-40 scale-350 text-[#fafafa]" />
+			<IconMonitorFill class=" aspect-square scale-200 min-h-[10vh]  text-[#fafafa]" />
 		</button>
 	</div>
 </div>

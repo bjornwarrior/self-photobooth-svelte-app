@@ -1,6 +1,6 @@
 <script>
 	export let name1 = 'FARRAS';
-	export let name2 = 'AURORA';
+	export let name2 = 'SOMEONE';
 	// export let hexbg = '#FAFAFA';
 	export let hextext = '#010101';
 	export let font = 'handwritten-font';
