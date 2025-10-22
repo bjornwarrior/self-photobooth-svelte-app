@@ -1,0 +1,11 @@
+@import 'tailwindcss';
+
+body {
+  @apply overflow-hidden select-none;
+  font-family: 'Inter', sans-serif;
+  border-box: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
