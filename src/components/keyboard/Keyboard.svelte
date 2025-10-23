@@ -1,7 +1,9 @@
 <script lang="ts">
-  let name1 = "";
-  let name2 = "";
-  let activeInput = "name1";
+  export let name1: string = '';
+  export let name2: string = '';
+  export let width: string|number = '50';
+  export let activeInput: string = 'name1';
+
 
   // List tombol virtual keyboard
   const keys = [
@@ -27,46 +29,18 @@
       }
     }
   }
-
-  // Ganti input aktif saat fokus
-  function setActive(inputName: any) {
-    activeInput = inputName;
-  }
 </script>
 
-<style>
-  /* Override Tailwind if needed */
-</style>
 
-<div class="mx-auto max-w-[40vw] p-4">
-  <!-- Input pertama -->
-  <input
-    class="w-full mb-4 p-2 text-lg border border-gray-600 rounded bg-white text-black"
-    type="text"
-    bind:value={name1}
-    on:focus={() => setActive("name1")}
-    placeholder="Input name 1"
-    readonly
-  />
-
-  <!-- Input kedua -->
-  <input
-    class="w-full mb-6 p-2 text-lg border border-gray-600 rounded bg-white text-black"
-    type="text"
-    bind:value={name2}
-    on:focus={() => setActive("name2")}
-    placeholder="Input name 2"
-    readonly
-  />
-
+<div class="mx-auto p-4">
   <!-- Keyboard virtual -->
-  <div class=" p-4 rounded-lg select-none shadow-lg">
+  <div class="">
     <div class="flex gap-2 justify-center">
-      <div class="flex flex-col gap-2">
+      <div class="flex flex-col gap-3">
         <div class="flex items-center justify-center gap-2">
           {#each keys.slice(0, 10) as key}
             <button
-              class="flex items-center justify-center w-10 h-10 rounded-md text-[#010101]} outline-1 font-semibold hover:bg-gray-700 active:bg-gray-600 transition"
+              class="flex items-center justify-center {width} aspect-square text-[#010101]} outline-1 font-semibold hover:bg-[#010101] hover:text-[#fafafa] active:bg-gray-600 transition"
               on:click={() => handleKeyPress(key)}
             >
               {key === "Backspace" ? "⌫" : key}
@@ -76,7 +50,7 @@
         <div class="flex items-center justify-center gap-2">
           {#each keys.slice(10, 19) as key}
             <button
-              class="flex items-center justify-center w-10 h-10 rounded-md text-[#010101]} outline-1 font-semibold hover:bg-gray-700 active:bg-gray-600 transition"
+              class="flex items-center justify-center {width} aspect-square text-[#010101]} outline-1 font-semibold hover:bg-[#010101] hover:text-[#fafafa] active:bg-gray-600 transition"
               on:click={() => handleKeyPress(key)}
             >
               {key === "Backspace" ? "⌫" : key}
@@ -86,7 +60,7 @@
         <div class="flex items-center justify-center gap-2">
           {#each keys.slice(19, keys.length) as key}
             <button
-              class="flex items-center justify-center w-10 h-10 rounded-md text-[#010101]} outline-1 font-semibold hover:bg-gray-700 active:bg-gray-600 transition"
+              class="flex items-center justify-center {width} aspect-square text-[#010101]} outline-1 font-semibold hover:bg-[#010101] hover:text-[#fafafa] active:bg-gray-600 transition"
               on:click={() => handleKeyPress(key)}
             >
               {key === "Backspace" ? "⌫" : key}

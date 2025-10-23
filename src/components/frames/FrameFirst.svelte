@@ -18,7 +18,7 @@
 	<div
 		class="
     {font}
-	flex flex-col p-2 text-center text-[{hextext}]
+	flex flex-col p-2 h-full  justify-around text-center text-[{hextext}]
 	"
 	>
 		{#if name2}
