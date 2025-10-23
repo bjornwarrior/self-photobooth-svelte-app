@@ -1,5 +1,5 @@
 <script lang="ts">
-	import {name1, name2 } from '$lib/const/name.svelte';
+	// import {name1, name2 } from '$lib/const/name.svelte';
 	import FrameFirst from '../../components/frames/FrameFirst.svelte';
 	import Keyboard from '../../components/keyboard/Keyboard.svelte';
 
@@ -61,7 +61,7 @@
 						id="name2"
 					/>
 				</label>
-				<Keyboard width={'w-15'} activeInput={activeInput} name1={name1} name2={name2} />
+				<Keyboard width={'w-15'} activeInput={activeInput} name1={'farras'} name2={'name2'} />
 				<div class="flex cursor-pointer justify-end gap-6">
 					<button
 						onclick={anjay}
