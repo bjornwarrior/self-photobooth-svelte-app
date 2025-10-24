@@ -1,6 +1,14 @@
 <script lang="ts">
+	import { goto } from "$app/navigation";
+	import { userData } from "$lib/state/package.svelte";
+
+
 	const handlePayment = () => {
-		alert('pay with ' + paymentOptions );
+
+		// Response
+		// isPaymentSuccess? 
+		userData.isPaymentSuccess = true
+		goto('/frame')
 	};
 
 	let paymentOptions = $state('qris');
@@ -37,7 +45,7 @@
 			<div class="flex flex-col gap-4 bg-[#D9D9D9] p-6 outline-2">
 				<button
 					onclick={() => (paymentOptions = 'qris')}
-					class="flex h-40 w-80 transform items-center justify-center text-center text-4xl
+					class="flex h-40 w-80 transform items-center justify-center cursor-pointer text-center text-4xl
            font-extrabold transition-transform ease-in-out duration-300
            {paymentOptions !== 'qris'
 						? 'bg-[#fafafa] text-[#010101] outline-2'
@@ -48,7 +56,7 @@
 				<div class="border-t-2"></div>
 				<button
 					onclick={() => (paymentOptions = 'gopay')}
-					class="flex h-40 w-80 transform items-center justify-center text-center text-4xl
+					class="flex h-40 w-80 transform items-center cursor-pointer justify-center text-center text-4xl
            font-extrabold transition-transform ease-in-out duration-300
            {paymentOptions === 'qris'
 						? 'bg-[#fafafa] text-[#010101] outline-2'
@@ -61,7 +69,7 @@
 			<button
                 onclick={handlePayment}
 				style="background:#010101;"
-				class="h-14 items-center text-center text-xl font-bold text-[#fafafa]"
+				class="h-14 items-center text-center text-xl cursor-pointer font-bold text-[#fafafa]"
 			>
 				<p>PAY HERE WITH {
                     paymentOptions === 'qris'

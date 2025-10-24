@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	export let name1 = 'FARRAS';
 	export let name2 = 'SOMEONE?';
 	// export let hexbg = '#FAFAFA';

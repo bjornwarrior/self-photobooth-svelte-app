@@ -1,6 +1,8 @@
 <script lang="ts">
-	const hai = () => {
-		alert('hai');
+	import { goto } from "$app/navigation";
+
+	const gotoPayment = () => {
+		goto('/payment')
 	};
 </script>
 
@@ -49,7 +51,7 @@
 	</div>
 	<div class="flex items-center justify-between">
 		<img src="./img/man-pose-2.png" class="max-h-64" alt="man sitdown pose" />
-		<button onclick={hai} class="text-md cursor-pointer h-full flex-1 text-center">
+		<button onclick={gotoPayment} class="text-md cursor-pointer h-full flex-1 text-center">
 			<p class="slow-pulse">PRESS HERE TO START YOUR JOURNEY</p>
 		</button>
 		<img src="./img/man-pose-1.png" class="max-h-64" alt="man sitdown pose" />

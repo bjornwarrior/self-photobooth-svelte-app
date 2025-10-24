@@ -1,50 +1,86 @@
+// src/lib/state/package.svelte.ts
+export type Photo = {
+  id: number;
+  url_photo: string;
+  effect?: string;
+  photo_file?: File;
+};
 
-  export type photo = {
-    id: number;
-    url_photo: string;
-    effect?: string;
-    photo_file?: File;
-  };
+export type Effect = {
+  id: number;
+  name: string;
+  effect: Node;
+  image_example_url: string;
+};
 
-  export type effect = {
-    id: number;
-    name: string;
-    effect: Node;
-    image_example_url: string;
-  };
+export type Effects = {
+  data: Effect[];
+};
 
-  export type effects = {
-    data: effect[];
-  };
+export type FrameData = {
+  id: number;
+  name: string;
+  total_grid: 3 | 4;
+  total_user: number;
+  font_url: string;
+  font_family: string;
+  type_font: 'italic' | 'regular';
+  background_color_hex: string;
+  color_hex: string;
+  weight: 'extralight' | 'light' | 'medium' | 'normal' | 'semibold' | 'bold' | 'extrabold' | 'black';
+};
 
-  export type frame = {
-    name: string;
-    id: number;
-    total_grid: number;
-    total_user: number;
-    font: string;
-    type_font: 'italic' | 'regular';
-    weight: 'extralight' | 'light' | 'normal' | 'semibold' | 'bold' | 'extrabold' | 'black';
-  };
+export type ResultPhotoPackage = {
+  main_url: string;
+  photos_url: string[];
+  result_url: string;
+};
 
-  export type resultPhotoPackage = {
-    main_url: string;
-    photos_url: string[];
-    result_url: string;
-  };
+export type DataUser = {
+  username: string;
+  username2?: string;
+  frame: FrameData;
+  photos: Photo[];
+  paymentMethod: string;
+  amountPay: number;
+  resultPhotoPackageUrl: ResultPhotoPackage;
+  isPaymentSuccess: boolean;
+};
 
-  export type data_user = {
-    username: string; // user1
-    username2?: string;
-    frame: frame;
-    photos: photo[];
-    paymentMethod: string;
-    amountPay: number;
-    resultPhotoPackageUrl: resultPhotoPackage;
-  };
+export const photos = $state<Photo[]>([
+  {
+    id: 0,
+    url_photo: '',
+  },
+]);
 
-  // Contoh reactive state menggunakan $state
-  export const photos = $state<photo[]>([]);
-  export const effectsList = $state<effects>({ data: [] });
-  export const currentFrame = $state<frame | null>(null);
-  export const userData = $state<data_user | null>(null);
+export const effectsList = $state<Effects>({ data: [] });
+
+export const resultPhotoCloudUrl = $state<ResultPhotoPackage>({
+  main_url: '',
+  result_url: '',
+  photos_url: [],
+});
+
+export const currentFrame = $state<FrameData>({
+  id: 1,
+  name: 'Default Frame',
+  total_grid: 3,
+  total_user: 2,
+  font_url: 'https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap',
+  font_family: 'Inter',
+  type_font: 'regular',
+  weight: 'bold',
+  background_color_hex: '#fafafa',
+  color_hex: '#010101',
+});
+
+export const userData = $state<DataUser>({
+  username: '',
+  frame: currentFrame,
+  photos: photos,
+  paymentMethod: 'gopay',
+  amountPay: 30000,
+  resultPhotoPackageUrl: resultPhotoCloudUrl,
+  isPaymentSuccess: false,
+});
