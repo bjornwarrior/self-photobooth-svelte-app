@@ -1,13 +1,14 @@
 <script lang="ts">
 	import { goto } from "$app/navigation";
-	import { userData } from "$lib/state/package.svelte";
+	import { stateUserData } from "$lib/state/package.svelte";
 
 
 	const handlePayment = () => {
 
 		// Response
 		// isPaymentSuccess? 
-		userData.isPaymentSuccess = true
+		stateUserData.isPaymentSuccess = true
+		stateUserData.paymentMethod = paymentOptions
 		goto('/frame')
 	};
 
@@ -18,11 +19,11 @@
 	style="background-color: #fffff7;"
 	class="eask flex max-h-svh min-h-svh w-full flex-col items-center justify-center px-10"
 >
-	<div class=" absolute top-0 flex w-full justify-between px-10">
+	<div class=" absolute top-0 flex w-full justify-between px-8">
 		<img src="./img/left-telephones.png" alt="Telephones" class="max-h-48" />
 		<img src="./img/right-telephones.png" alt="Telephones" class="max-h-40" />
 	</div>
-	<div class="flex w-full items-center justify-evenly">
+	<div class="flex w-full scale-80 z-3 items-center justify-evenly">
 		<div class="flex flex-col items-center gap-10">
 			<div class="flex transform">
 				<div class="-rotate-6 transform">
@@ -80,7 +81,7 @@
 		</div>
 	</div>
 	<div class="absolute bottom-0 flex w-full items-end justify-between px-8">
-		<img src="./img/woman-pose-1.png" class="max-h-64" alt="woman sitdown pose" />
-		<img src="./img/woman-pose-2.png" class="max-h-64" alt="woman sitdown pose" />
+		<img src="./img/woman-pose-1.png" class="max-h-[25vh]" alt="woman sitdown pose" />
+		<img src="./img/woman-pose-2.png" class="max-h-[25vh]" alt="woman sitdown pose" />
 	</div>
 </div>

@@ -1,8 +1,12 @@
 <script lang="ts">
+	import { goto } from "$app/navigation";
+	import { stateCurrentFrame, stateUserData } from "$lib/state/package.svelte";
 	import FrameFirst from "../../components/frames/FrameFirst.svelte";
 
 	const anjay = () => {
 		alert('anjay');
+        window.print();
+        goto('/thanks')
 	}
 </script>
 
@@ -15,22 +19,24 @@
 		<img src="./img/right-telephones.png" alt="Telephones" class="max-h-40" />
 	</div>
 
-    <div class="absolute
-    
-    py-6 font-bold w-4 px-8 break-all text-xl bg-[#010101] text-[#FAFAFA] right-0
+    <button
+    onclick="{anjay}"
+    class="absolute
+    cursor-pointer
+    py-6 font-bold w-3 text-center items-center px-8 break-all text-xl bg-[#010101] text-[#FAFAFA] right-0
     ">
     PRINT
-</div>
-	<div class="flex justify-center gap-64 items-center z-10 w-full">
+</button>
+	<div class="flex justify-center gap-[10vw] items-center z-10 w-full">
         <div class="flex transform">
             <div class='transform -rotate-8'>
-                <FrameFirst name1="FARRAS" name2="AURORA" hextext="#010101" font="handwritten-font" />
+                <FrameFirst name1={stateUserData.username} name2={stateUserData.username2} frameData={stateCurrentFrame} />
             </div>
             <div class='transform rotate-8'>
-                <FrameFirst name1="FARRAS" name2="AURORA" hextext="#010101" font="handwritten-font" />
+                <FrameFirst name1={stateUserData.username} name2={stateUserData.username2} frameData={stateCurrentFrame} />
             </div>
         </div>
-        <div class='flex flex-col gap-10 justify-between'>
+        <div class='flex flex-col gap-10 justify-between scale-90'>
             <div class="flex flex-col gap-2">
                 <h1 class="text-8xl font-extrabold text-shadow-zinc-950 text-shadow-2xs">
                     AWESOME!
@@ -55,9 +61,9 @@
             </h5>
         </div>
 	</div>
-    <div class="absolute bottom-0 flex w-full items-end justify-between px-8">
-		<img src="./img/woman-pose-1.png" class="max-h-64" alt="woman sitdown pose" />
-		<img src="./img/woman-pose-2.png" class="max-h-64" alt="woman sitdown pose" />
+    <div class="absolute bottom-0 flex w-full items-end justify-between px-4">
+		<img src="./img/woman-pose-1.png" class="max-h-[25vh]" alt="woman sitdown pose" />
+		<img src="./img/woman-pose-2.png" class="max-h-[25vh]" alt="woman sitdown pose" />
 	</div>
 </div>
 

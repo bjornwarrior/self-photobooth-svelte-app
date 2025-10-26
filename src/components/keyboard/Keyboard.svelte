@@ -1,8 +1,6 @@
 <script lang="ts">
-  export let name1: string = '';
-  export let name2: string = '';
   export let width: string|number = '50';
-  export let activeInput: string = 'name1';
+  export let handleKeyPress: (key: string) => void;
 
 
   // List tombol virtual keyboard
@@ -14,21 +12,7 @@
   ];
 
   // Fungsi handle penekanan tombol virtual keyboard
-  function handleKeyPress(key: any) {
-    if (activeInput === "name1") {
-      if(key === "Backspace") {
-        name1 = name1.slice(0, -1);
-      } else {
-        name1 += key;
-      }
-    } else if (activeInput === "name2") {
-      if(key === "Backspace") {
-        name2 = name2.slice(0, -1);
-      } else {
-        name2 += key;
-      }
-    }
-  }
+  
 </script>
 
 

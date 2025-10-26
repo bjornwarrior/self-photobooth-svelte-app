@@ -11,11 +11,11 @@
 	class="eask flex max-h-svh min-h-svh w-full flex-col items-center justify-center px-10"
 >
 	<div class=" absolute top-0 flex w-full justify-between px-10">
-		<img src="./img/left-telephones.png" alt="Telephones" class="max-h-48" />
-		<img src="./img/right-telephones.png" alt="Telephones" class="max-h-40" />
+		<img src="./img/left-telephones.png" alt="Telephones" class="max-h-[30vh]" />
+		<img src="./img/right-telephones.png" alt="Telephones" class="max-h-[25vh]" />
 	</div>
 
-	<div class="z-10 flex flex-col justify-between gap-10 items-center">
+	<div class="z-10 flex flex-col scale-80 justify-between gap-10 items-center">
 		<div class="flex flex-col gap-6 items-center">
 			<h1 class="text-8xl font-extrabold text-shadow-2xs text-shadow-zinc-950">THANKS!</h1>
 			<h5 class="text-start text-2xl font-extralight tracking-[.25em] italic">
@@ -38,7 +38,7 @@
 		</h5>
 	</div>
 	<div class="absolute bottom-0 flex w-full items-end justify-between px-8">
-		<img src="./img/woman-pose-1.png" class="max-h-120 h-120" alt="woman sitdown pose" />
-		<img src="./img/woman-pose-2.png" class="max-h-120 h-120" alt="woman sitdown pose" />
+		<img src="./img/woman-pose-1.png" class="max-h-[35vh] h-[35vh]" alt="woman sitdown pose" />
+		<img src="./img/woman-pose-2.png" class="max-h-[35vh] h-[35vh]" alt="woman sitdown pose" />
 	</div>
 </div>

@@ -151,7 +151,7 @@
     "
 		>
 			<IconArrowCounterClockwiseBold
-				class=" h-[5vh] aspect-square curso scale-150rmin--pointer tex10-[#fafafa]"
+				class=" aspect-square scale-200 min-h-[10vh]  text-[#fafafa]"
 			/>
 		</button>
 	</div>

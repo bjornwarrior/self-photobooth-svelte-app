@@ -26,13 +26,13 @@
 
 <div
 	style="background-color: #fffff7;"
-	class="eask flex max-h-svh min-h-svh w-full flex-col justify-between px-10"
+	class="eask flex max-h-svh min-h-svh w-full flex-col justify-center px-10"
 >
-	<div class=" flex w-full justify-between">
+	<div class=" flex w-full justify-between absolute top-0 right-0">
 		<img src="./img/left-telephones.png" alt="Telephones" class="max-h-48" />
 		<img src="./img/right-telephones.png" alt="Telephones" class="max-h-40" />
 	</div>
-	<div class="w-ful flex justify-evenly">
+	<div class="w-full scale-80 gap-20 flex justify-evenly">
 		<img src="./img/frameGroup.png" alt="Kelompok Frame" class="" />
 		<div class="flex flex-col justify-around">
 			<h1 class="text-end text-8xl font-[1000] italic text-shadow-2xs">ELEGANT42</h1>
@@ -49,11 +49,11 @@
 			</h2>
 		</div>
 	</div>
-	<div class="flex items-center justify-between">
-		<img src="./img/man-pose-2.png" class="max-h-64" alt="man sitdown pose" />
-		<button onclick={gotoPayment} class="text-md cursor-pointer h-full flex-1 text-center">
+	<div class="flex items-center justify-between absolute right-0 bottom-0 w-full ">
+		<img src="./img/man-pose-2.png" class="max-h-[20vh]" alt="man sitdown pose" />
+		<button onclick={gotoPayment} class="text-md cursor-pointer h-full text-sm flex-1 text-center">
 			<p class="slow-pulse">PRESS HERE TO START YOUR JOURNEY</p>
 		</button>
-		<img src="./img/man-pose-1.png" class="max-h-64" alt="man sitdown pose" />
+		<img src="./img/man-pose-1.png" class="max-h-[20vh]" alt="man sitdown pose" />
 	</div>
 </div>

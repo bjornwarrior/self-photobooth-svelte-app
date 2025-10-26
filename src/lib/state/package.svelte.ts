@@ -1,3 +1,5 @@
+import type { FrameData } from "$lib/types/frameTypes";
+
 // src/lib/state/package.svelte.ts
 export type Photo = {
   id: number;
@@ -15,19 +17,6 @@ export type Effect = {
 
 export type Effects = {
   data: Effect[];
-};
-
-export type FrameData = {
-  id: number;
-  name: string;
-  total_grid: 3 | 4;
-  total_user: number;
-  font_url: string;
-  font_family: string;
-  type_font: 'italic' | 'regular';
-  background_color_hex: string;
-  color_hex: string;
-  weight: 'extralight' | 'light' | 'medium' | 'normal' | 'semibold' | 'bold' | 'extrabold' | 'black';
 };
 
 export type ResultPhotoPackage = {
@@ -62,22 +51,36 @@ export const resultPhotoCloudUrl = $state<ResultPhotoPackage>({
   photos_url: [],
 });
 
-export const currentFrame = $state<FrameData>({
-  id: 1,
-  name: 'Default Frame',
-  total_grid: 3,
-  total_user: 2,
-  font_url: 'https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap',
-  font_family: 'Inter',
-  type_font: 'regular',
-  weight: 'bold',
-  background_color_hex: '#fafafa',
-  color_hex: '#010101',
-});
+export let stateCurrentFrame = $state<FrameData>({
+    id: 1,
+    name: "Sweet Blush",
+    total_grid: 3,
+    total_user: 2,
+    grid_cols: 1,
+    grid_rows: 3,
+    gap: 2,
+    label_position: "bottom",
+    background_color_hex: "#FFF0F5",
+    color_name_hex: "#333333",
+    color_brand_hex: "#FFB6C1",
+    outline_hex: "#FF9EB5",
+    mid_border_hex: "#FFD6E0",
+    outline: true,
+    shadow: true,
+    font_url_name: "https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap",
+    font_url_brand: "https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap",
+    font_family_name: "Great Vibes",
+    font_family_brand: "Inter",
+    weight: "semibold",
+    brand_name: "ELEGANT42",
+    category: "handwritten",
+    suitableFor: "couple",
+  },);
 
-export const userData = $state<DataUser>({
-  username: '',
-  frame: currentFrame,
+export let stateUserData = $state<DataUser>({
+  username: 'USERNAME1',
+  username2: 'USERNAME2',
+  frame: stateCurrentFrame,
   photos: photos,
   paymentMethod: 'gopay',
   amountPay: 30000,
